@@ -1,0 +1,832 @@
+
+/* =========================================
+   PROFILE PAGE — GLASSMORPHISM
+   BEIGE & VERT SAUGE
+========================================= */
+
+/* IMPORTATION DES POLICES */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+/* =========================================
+   1. VARIABLES
+========================================= */
+
+:root {
+  --beige: #CEB89D;
+  --sage: #C5DDDA;
+  --white: #FFFFFF;
+
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================
+   2. RESET CSS
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   3. BODY
+========================================= */
+
+body {
+  position: relative;
+
+  min-height: 100vh;
+  padding: 60px 20px;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: var(--white);
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #8B8073,
+    #819B96
+  );
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   4. ARRIÈRE-PLAN LUMINEUX
+========================================= */
+
+.background-blobs {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+  overflow: hidden;
+
+  pointer-events: none;
+
+  filter: blur(85px);
+}
+
+.blob {
+  position: absolute;
+
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+/* Lumière beige */
+
+.blob-1 {
+  width: 450px;
+  height: 450px;
+
+  background: var(--beige);
+
+  top: 5%;
+  left: 10%;
+}
+
+/* Lumière vert sauge */
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+
+  background: var(--sage);
+
+  bottom: 5%;
+  right: 8%;
+}
+
+
+/* =========================================
+   5. CONTAINER
+========================================= */
+
+.container {
+  position: relative;
+  z-index: 1;
+
+  width: 90%;
+  max-width: 750px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   6. CARTES
+========================================= */
+
+.card {
+  position: relative;
+
+  width: 100%;
+  padding: 35px;
+
+  border-radius: 24px;
+}
+
+
+/* CARTE PRINCIPALE */
+
+.card-glass {
+  background: var(--glass);
+
+  border: 1px solid rgba(255, 255, 255, 0.30);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+
+/* CARTES INTÉRIEURES */
+
+.card-section {
+  margin-top: 28px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+
+/* =========================================
+   7. HOVER GLASSMORPHISM
+========================================= */
+
+.card-section:hover {
+  background: var(--glass-hover);
+
+  border-color: rgba(255, 255, 255, 0.65);
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.12),
+    0 0 25px rgba(255, 255, 255, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+
+/* REFLET LUMINEUX AU SURVOL */
+
+.card-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: -50%;
+  left: -100%;
+
+  width: 50%;
+  height: 200%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.20),
+    transparent
+  );
+
+  transform: rotate(25deg);
+
+  pointer-events: none;
+
+  transition: left 0.9s ease;
+}
+
+.card-section:hover::before {
+  left: 150%;
+}
+
+
+/* =========================================
+   8. PHOTO DE PROFIL
+========================================= */
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.profile-photo {
+  display: block;
+
+  width: 160px;
+  height: 160px;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+  border: 2px solid white;
+
+  margin: 0 auto 30px;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 20px rgba(255, 255, 255, 0.70),
+    0 0 40px rgba(255, 255, 255, 0.40);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+/* PHOTO AU SURVOL */
+
+.profile-photo:hover {
+  transform: scale(1.06);
+
+  box-shadow:
+    0 0 12px white,
+    0 0 30px rgba(255, 255, 255, 0.90),
+    0 0 60px rgba(255, 255, 255, 0.60);
+}
+
+
+/* =========================================
+   9. TYPOGRAPHIE
+========================================= */
+
+.text-center {
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Helvetica, Arial, sans-serif;
+
+  color: var(--white);
+  line-height: 1.4;
+}
+
+
+/* PLAYFAIR DISPLAY POUR LES TITRES */
+
+.title-playfair {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 23px;
+  margin-bottom: 18px;
+}
+
+h3 {
+  font-size: 19px;
+}
+
+p {
+  font-family: Helvetica, Arial, sans-serif;
+
+  font-size: 16px;
+  line-height: 1.9;
+
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   10. PASSIONS
+   TEXTE SIMPLE SANS INTERACTION
+========================================= */
+
+.hobbies-list {
+  list-style: none;
+
+  padding-left: 0;
+  margin: 25px 0;
+}
+
+.hobbies-list li {
+  font-family: Helvetica, Arial, sans-serif;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin: 10px 0;
+
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  transform: none;
+  transition: none;
+}
+
+
+/* =========================================
+   11. LIENS
+========================================= */
+
+a {
+  font-family: Helvetica, Arial, sans-serif;
+
+  color: var(--white);
+  text-decoration: none;
+
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================================
+   12. BOUTON LE WAGON
+========================================= */
+
+.btn {
+  display: inline-block;
+
+  padding: 13px 30px;
+  margin-top: 15px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    var(--beige),
+    var(--sage)
+  );
+
+  color: #46534F;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* BOUTON AU SURVOL */
+
+.btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.15),
+    0 0 25px rgba(255, 255, 255, 0.30);
+
+  color: #46534F;
+  opacity: 1;
+}
+
+
+/* =========================================
+   13. RÉSEAUX SOCIAUX
+========================================= */
+
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding: 0 6px;
+}
+
+.social-links {
+  margin-top: 25px;
+}
+
+.social-links li {
+  margin: 8px 3px;
+}
+
+.social-links a {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px 16px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: var(--white);
+  font-size: 15px;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.social-links i {
+  font-size: 23px;
+}
+
+
+/* RÉSEAUX SOCIAUX AU SURVOL */
+
+.social-links a:hover {
+  background: rgba(255, 255, 255, 0.20);
+
+  border-color: rgba(255, 255, 255, 0.65);
+
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+
+/* =========================================
+   14. ACCESSIBILITÉ
+========================================= */
+
+a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   15. RESPONSIVE DESIGN
+   MEDIA QUERIES — LE WAGON
+========================================= */
+
+
+/* ÉCRANS LARGES */
+
+@media (max-width: 960px) {
+
+  .container {
+    width: 700px;
+    max-width: 90%;
+  }
+
+  .card {
+    padding: 30px;
+  }
+
+  .blob-1,
+  .blob-2 {
+    width: 380px;
+    height: 380px;
+  }
+}
+
+
+/* TABLETTES */
+
+@media (max-width: 720px) {
+
+  .container {
+    width: 500px;
+    max-width: 95%;
+  }
+
+  body {
+    padding: 35px 15px;
+  }
+
+  .card {
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  .profile-photo {
+    width: 135px;
+    height: 135px;
+  }
+
+  .blob-1,
+  .blob-2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .social-links a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+
+/* SMARTPHONES */
+
+@media (max-width: 540px) {
+
+  .container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  body {
+    padding: 20px 12px;
+  }
+
+  .card {
+    padding: 20px 15px;
+    border-radius: 18px;
+  }
+
+  .card-section {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .profile-photo {
+    width: 115px;
+    height: 115px;
+
+    margin-bottom: 20px;
+  }
+
+  .hobbies-list li {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 11px 18px;
+  }
+
+  .social-links {
+    margin-top: 15px;
+  }
+
+  .list-inline > li {
+    padding: 0 3px;
+  }
+
+  .social-links a {
+    font-size: 13px;
+    padding: 9px 11px;
+  }
+
+  .social-links i {
+    font-size: 19px;
+  }
+
+  .blob-1,
+  .blob-2 {
+    width: 230px;
+    height: 230px;
+  }
+}
+
+
+/* =========================================
+   16. RÉDUCTION DES ANIMATIONS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   17. HARMONISATION DES COULEURS
+   CAMAÏEU IVOIRE, BEIGE ET SAUGE
+========================================= */
+
+:root {
+  --text-main: #FFF8EF;
+  --text-beige: #E8CDB0;
+  --text-sage: #D2EAE4;
+}
+
+
+/* TEXTE GÉNÉRAL */
+
+body {
+  color: var(--text-main);
+}
+
+p {
+  color: var(--text-main);
+  font-weight: 400;
+}
+
+
+/* NOM PRINCIPAL */
+
+h1 {
+  color: var(--text-beige);
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 0 12px rgba(232, 205, 176, 0.25),
+    0 0 28px rgba(232, 205, 176, 0.12);
+}
+
+
+/* TITRES DES SECTIONS */
+
+h2 {
+  color: var(--text-beige);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  text-shadow:
+    0 0 15px rgba(232, 205, 176, 0.15);
+}
+
+
+/* PETITS TITRES */
+
+h3 {
+  color: var(--text-sage);
+  font-weight: 600;
+}
+
+
+/* TITRES PLAYFAIR */
+
+.title-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+
+/* SOUS-TITRES ET INFORMATIONS SECONDAIRES */
+
+.subtitle {
+  color: var(--text-sage);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+/* MOTS IMPORTANTS DANS LES PARAGRAPHES */
+
+strong,
+b {
+  color: var(--text-beige);
+  font-weight: 700;
+}
+
+
+/* PASSIONS EN TEXTE SIMPLE */
+
+.hobbies-list li {
+  color: var(--text-main);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Alternance subtile de couleurs */
+
+.hobbies-list li:nth-child(even) {
+  color: var(--text-sage);
+}
+
+
+/* LIENS */
+
+a {
+  color: var(--text-sage);
+}
+
+a:hover {
+  color: var(--text-beige);
+}
+
+
+/* RÉSEAUX SOCIAUX */
+
+.social-links a {
+  color: var(--text-main);
+}
+
+.social-links i {
+  color: var(--text-sage);
+
+  text-shadow:
+    0 0 12px rgba(210, 234, 228, 0.25);
+}
+
+.social-links a:hover,
+.social-links a:hover i {
+  color: var(--text-beige);
+}
+
+
+/* BOUTON LE WAGON */
+
+.btn {
+  color: #46534F;
+}
+
+.btn:hover {
+  color: #46534F;
+}
+
+
+/* PETIT ACCENT SOUS LES TITRES DES CARTES */
+
+.card-section h2::after {
+  content: "";
+
+  display: block;
+
+  width: 42px;
+  height: 2px;
+
+  margin: 12px auto 0;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    var(--text-beige),
+    var(--text-sage)
+  );
+
+  box-shadow:
+    0 0 12px rgba(210, 234, 228, 0.25);
+}
+
+
+/* RESPONSIVE SMARTPHONE */
+
+@media (max-width: 540px) {
+
+  h1 {
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    letter-spacing: 0.2px;
+  }
+
+  .card-section h2::after {
+    width: 32px;
+    margin-top: 10px;
+  }
+}
